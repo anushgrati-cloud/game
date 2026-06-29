@@ -1,0 +1,769 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+  .om-root {
+    font-family: 'Inter', sans-serif;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+    color: var(--text-primary);
+  }
+
+  .om-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #C4A882;
+  }
+
+  .om-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8B6140;
+    margin-bottom: 0.5rem;
+  }
+
+  .om-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #3D1F0D;
+    margin: 0 0 0.25rem;
+    line-height: 1.3;
+  }
+
+  .om-subtitle {
+    font-size: 13px;
+    color: #7A6555;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .om-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    min-height: 24px;
+  }
+
+  .om-crumb {
+    font-size: 11px;
+    color: #9B8474;
+    background: #F5EDE4;
+    border: 1px solid #E2D0C0;
+    border-radius: 4px;
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+
+  .om-crumb-arrow { font-size: 10px; color: #C4A882; }
+
+  .om-card {
+    background: #FDFAF6;
+    border: 1px solid #DDD0BE;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+  }
+
+  .om-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: #7D3B20;
+    border-radius: 12px 0 0 12px;
+  }
+
+  .om-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #3D1F0D;
+    line-height: 1.45;
+    margin: 0 0 0.25rem;
+  }
+
+  .om-question-sub {
+    font-size: 14px;
+    color: #7A6555;
+    font-style: italic;
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+  }
+
+  .om-reflection {
+    font-size: 13px;
+    color: #7D3B20;
+    background: #F2E8DC;
+    border-left: 3px solid #C4A882;
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .om-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .om-btn {
+    background: #FDFAF6;
+    border: 1px solid #CDBEA9;
+    border-radius: 8px;
+    padding: 13px 16px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: #3D1F0D;
+    cursor: pointer;
+    text-align: left;
+    line-height: 1.5;
+    transition: all 0.18s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .om-btn:hover {
+    background: #F2E8DC;
+    border-color: #8B6140;
+    transform: translateX(3px);
+  }
+
+  .om-btn::before {
+    content: '→';
+    color: #C4A882;
+    flex-shrink: 0;
+    font-size: 13px;
+    transition: color 0.18s ease;
+  }
+
+  .om-btn:hover::before { color: #7D3B20; }
+
+  .om-insight {
+    background: #3D1F0D;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .om-insight-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #C4A882;
+    margin-bottom: 0.5rem;
+  }
+
+  .om-insight-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #F5EDE4;
+    line-height: 1.65;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .om-final-block {
+    background: #F5EDE4;
+    border: 1px solid #DDD0BE;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .om-final-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9B8474;
+    margin-bottom: 0.5rem;
+  }
+
+  .om-final-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: #3D1F0D;
+    line-height: 1.65;
+    margin: 0 0 0.75rem;
+    font-style: italic;
+  }
+
+  .om-closing-q {
+    background: #FDFAF6;
+    border: 1px solid #C4A882;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .om-closing-q-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7D3B20;
+    margin-bottom: 0.4rem;
+  }
+
+  .om-closing-q-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #3D1F0D;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .om-reset {
+    display: block;
+    margin: 0 auto 1.5rem;
+    background: transparent;
+    border: 1px solid #CDBEA9;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    color: #7A6555;
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+
+  .om-reset:hover {
+    border-color: #8B6140;
+    color: #3D1F0D;
+    background: #F5EDE4;
+  }
+
+  /* Taller info */
+  .om-taller {
+    background: #3D1F0D;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  .om-taller-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #C4A882;
+    margin-bottom: 0.75rem;
+  }
+
+  .om-taller-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #F5EDE4;
+    margin: 0 0 0.35rem;
+    line-height: 1.3;
+  }
+
+  .om-taller-sub {
+    font-size: 13px;
+    color: #C4A882;
+    font-style: italic;
+    margin: 0 0 1.25rem;
+  }
+
+  .om-taller-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+
+  .om-taller-item {
+    background: rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+
+  .om-taller-item-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9B8474;
+    margin-bottom: 3px;
+  }
+
+  .om-taller-item-value {
+    font-size: 13px;
+    color: #F5EDE4;
+    line-height: 1.4;
+  }
+
+  .om-taller-desc {
+    font-size: 13px;
+    color: #C4A882;
+    line-height: 1.7;
+    margin: 0 0 1.5rem;
+    border-top: 1px solid rgba(196,168,130,0.3);
+    padding-top: 1rem;
+  }
+
+  .om-sessions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+  }
+
+  .om-session {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .om-session-num {
+    color: #7D3B20;
+    font-weight: 500;
+    flex-shrink: 0;
+    width: 18px;
+    background: rgba(196,168,130,0.2);
+    border-radius: 3px;
+    text-align: center;
+    padding: 1px 0;
+    font-size: 11px;
+  }
+
+  .om-session-text {
+    color: #C4A882;
+    line-height: 1.5;
+  }
+
+  .om-cta {
+    display: block;
+    width: 100%;
+    background: #C4A882;
+    color: #3D1F0D;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.18s ease;
+    box-sizing: border-box;
+  }
+
+  .om-cta:hover {
+    background: #D4B99A;
+    transform: translateY(-1px);
+  }
+
+  .om-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #E8D9C8;
+  }
+
+  .om-footer p {
+    font-size: 12px;
+    color: #9B8474;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .om-footer em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .om-animate { animation: fadeIn 0.25s ease forwards; }
+</style>
+
+<div class="om-root">
+  <h2 class="sr-only">Árbol de decisiones interactivo basado en Los que se alejan de Omelas de Le Guin, con información sobre el taller Escritura para pensar.</h2>
+
+  <div class="om-header">
+    <p class="om-eyebrow">Escritura para pensar · Le Guin</p>
+    <h1 class="om-title">¿Qué harías en Omelas?</h1>
+    <p class="om-subtitle">Un explorador de decisiones éticas sin respuestas correctas</p>
+  </div>
+
+  <div id="om-content"></div>
+
+  <div class="om-footer">
+    <p>No hay respuestas correctas.<br>Basado en <em>Los que se alejan de Omelas</em> de Ursula K. Le Guin.</p>
+  </div>
+</div>
+
+<script>
+const decisions = {
+  root: {
+    question: "Si supieras la verdad sobre Omelas...",
+    subtitle: "¿Cuál sería tu primer impulso?",
+    options: [
+      { id: 'leave', label: 'Me iría sin pensarlo' },
+      { id: 'stay', label: 'Me quedaría a cambiarlo' },
+      { id: 'unsure', label: 'No sé, depende' }
+    ]
+  },
+  leave: {
+    question: "Entiendes que tu salida...",
+    subtitle: "¿Deja el sistema intacto?",
+    options: [
+      { id: 'leave-conscience', label: 'Sí, pero es un acto de integridad' },
+      { id: 'leave-powerless', label: 'Sí, pero al menos no soy cómplice' },
+      { id: 'leave-external', label: 'No, puedo cambiar desde afuera' }
+    ],
+    reflection: "Tu lógica: la integridad personal pesa más que la capacidad de cambio."
+  },
+  stay: {
+    question: "¿Cómo esperas cambiar el sistema...",
+    subtitle: "Si todos dependen de que siga igual?",
+    options: [
+      { id: 'stay-inside', label: 'Lentamente, desde adentro' },
+      { id: 'stay-exposure', label: 'Haciendo visible lo invisible' },
+      { id: 'stay-impossible', label: 'Honestamente, no sé' }
+    ],
+    reflection: "Tu lógica: el cambio requiere estar en la posición de poder."
+  },
+  unsure: {
+    question: "Ese 'depende' es importante.",
+    subtitle: "¿De qué depende tu decisión?",
+    options: [
+      { id: 'unsure-who', label: 'De cuál es mi rol en el sistema' },
+      { id: 'unsure-cost', label: 'De cuál sería el verdadero costo' },
+      { id: 'unsure-both', label: 'De todo lo anterior' }
+    ],
+    reflection: "Tu lógica: los dilemas éticos no tienen una respuesta sino múltiples consideraciones."
+  },
+  'leave-conscience': {
+    question: "¿Qué significa ser 'cómplice'...",
+    subtitle: "Si simplemente heredaste el sistema?",
+    options: [
+      { id: 'final-1', label: 'Ser consciente te hace responsable' },
+      { id: 'final-2', label: 'Solo si contribuyes activamente' }
+    ],
+    final: true,
+    insight: "Omelas enseña que la incomodidad es donde empieza la responsabilidad. Irte no la elimina, solo la nombra diferente."
+  },
+  'leave-powerless': {
+    question: "¿Y si tu salida fuera...",
+    subtitle: "...la única forma de presión que el sistema entiende?",
+    options: [
+      { id: 'final-3', label: 'Tiene sentido, es una forma de poder' },
+      { id: 'final-4', label: 'Dudo que un omeleita se vaya por eso' }
+    ],
+    final: true,
+    insight: "Le Guin dice que algunos se van. Pero nunca dice que el sistema cambia. La pregunta es: ¿la integridad vale el precio?"
+  },
+  'leave-external': {
+    question: "¿Cómo presionas desde afuera...",
+    subtitle: "Un sistema que no necesita tu participación?",
+    options: [
+      { id: 'final-5', label: 'Eso es lo que nunca pienso bien' },
+      { id: 'final-6', label: 'Es una ilusión que me tranquiliza' }
+    ],
+    final: true,
+    insight: "Aquí está la grieta del argumento: si te vas, pierdes poder. La pregunta incómoda es si la salida es heroísmo o escapismo."
+  },
+  'stay-inside': {
+    question: "¿Qué significa 'lentamente'...",
+    subtitle: "¿Cuántos niños sufren en 'lentamente'?",
+    options: [
+      { id: 'final-7', label: 'Dolor necesario para cambio real' },
+      { id: 'final-8', label: 'Justificación que me conviene' }
+    ],
+    final: true,
+    insight: "Este es el dilema utilitarista. Aceptas el costo actual porque crees en un beneficio futuro. ¿Quién paga la apuesta?"
+  },
+  'stay-exposure': {
+    question: "¿Nombrar lo invisible...",
+    subtitle: "...es lo mismo que cambiarlo?",
+    options: [
+      { id: 'final-9', label: 'Es el primer paso necesario' },
+      { id: 'final-10', label: 'Quizás el único paso que puedo dar' }
+    ],
+    final: true,
+    insight: "Aquí está tu poder real: convertir lo silencioso en una conversación. No resuelve el dilema, pero lo abre."
+  },
+  'stay-impossible': {
+    question: "Esa honestidad radical...",
+    subtitle: "...¿es una fortaleza o una debilidad?",
+    options: [
+      { id: 'final-11', label: 'Es lo más honesto que pude responder' },
+      { id: 'final-12', label: 'Pero tengo que decidir de todas formas' }
+    ],
+    final: true,
+    insight: "Reconocer que no hay salida limpia es el aprendizaje real. Desde ahí, todo lo que hagas es una elección consciente."
+  },
+  'unsure-who': {
+    question: "Tu rol determina...",
+    subtitle: "¿Cuánto poder tienes realmente?",
+    options: [
+      { id: 'final-13', label: 'Si tengo poder, responsabilidad mayor' },
+      { id: 'final-14', label: 'Incluso sin poder, tengo opciones' }
+    ],
+    final: true,
+    insight: "Un líder ve Omelas diferente que alguien sin autoridad. Pero ambos ven la verdad. Eso cambió algo."
+  },
+  'unsure-cost': {
+    question: "¿Cuál sería el verdadero costo...",
+    subtitle: "...de salir vs. de quedarse?",
+    options: [
+      { id: 'final-15', label: 'Salir cuesta integridad, quedarme cuesta conciencia' },
+      { id: 'final-16', label: 'Es imposible saber hasta vivirlo' }
+    ],
+    final: true,
+    insight: "El costo no es matemático. Es existencial. Omelas te obliga a elegir cuál puedes vivir."
+  },
+  'unsure-both': {
+    question: "Entonces tu decisión será...",
+    subtitle: "...una síntesis de múltiples tensiones",
+    options: [
+      { id: 'final-17', label: 'Sí, y eso me hace más responsable' },
+      { id: 'final-18', label: 'Sí, pero no hay garantía de que sea la correcta' }
+    ],
+    final: true,
+    insight: "Aquí vive el liderazgo real: navegar decisiones que no tienen respuestas claras, asumiendo plenamente el peso."
+  }
+};
+
+const finalData = {
+  'final-1': {
+    reflexion: "El conocimiento cambia algo para siempre. Ya no podés no saber.",
+    pregunta: "¿Cuántas decisiones tomás hoy sabiendo cosas que preferirías no saber?"
+  },
+  'final-2': {
+    reflexion: "La pasividad tiene su propia lógica. También tiene su propio costo.",
+    pregunta: "¿Dónde está el límite entre no contribuir y ser indiferente?"
+  },
+  'final-3': {
+    reflexion: "La presión silenciosa existe. Pero alguien tiene que verla para que funcione.",
+    pregunta: "¿Quién miraría tu salida y cambiaría algo porque la vio?"
+  },
+  'final-4': {
+    reflexion: "Un sistema que no necesita tu participación ya ganó antes de que decidieras.",
+    pregunta: "¿Cuándo fue la última vez que tu presencia (o ausencia) importó en un sistema?"
+  },
+  'final-5': {
+    reflexion: "Las preguntas sin respuesta también son aprendizaje. A veces son el aprendizaje más honesto.",
+    pregunta: "¿Qué harías diferente si tuvieras que decidir mañana?"
+  },
+  'final-6': {
+    reflexion: "Las ilusiones necesarias también son una forma de sobrevivir lo que no tiene salida limpia.",
+    pregunta: "¿Qué ilusiones sostenés para poder seguir actuando en sistemas que no controlás?"
+  },
+  'final-7': {
+    reflexion: "Cada utopía tiene un sótano. La pregunta es si alguien lo ve.",
+    pregunta: "¿Cuántos niños (reales o metafóricos) están pagando el costo de tu 'lentamente'?"
+  },
+  'final-8': {
+    reflexion: "Nombrar la justificación ya es una forma de honestidad. Pocos llegan ahí.",
+    pregunta: "¿Qué harías si supieras que el cambio no va a llegar mientras estás adentro?"
+  },
+  'final-9': {
+    reflexion: "Las conversaciones que abren también pueden cerrarse. El primer paso no garantiza el segundo.",
+    pregunta: "¿Tenés poder para nombrar lo invisible o solo para verlo?"
+  },
+  'final-10': {
+    reflexion: "Un paso pequeño que es tuyo vale más que un plan que nunca se mueve.",
+    pregunta: "¿Ese paso abre algo para otros, o solo te deja a vos con la conciencia tranquila?"
+  },
+  'final-11': {
+    reflexion: "La honestidad radical es rara. Cuando aparece, cambia el cuarto.",
+    pregunta: "¿Podés sostener esa honestidad cuando el sistema te pida que elijas igual?"
+  },
+  'final-12': {
+    reflexion: "Decidir sin certeza es la condición de casi todo liderazgo real.",
+    pregunta: "¿Cómo tomás decisiones cuando sabés que no vas a saber si fue la correcta?"
+  },
+  'final-13': {
+    reflexion: "El poder amplifica. Amplifica la responsabilidad y también las excusas.",
+    pregunta: "¿Qué haría alguien con menos poder que vos si estuviera en tu lugar?"
+  },
+  'final-14': {
+    reflexion: "Siempre hay opciones. A veces son muy pequeñas. Pero están.",
+    pregunta: "¿Cuál es la opción más pequeña que todavía tenés disponible?"
+  },
+  'final-15': {
+    reflexion: "Ambos costos son reales. Ninguno desaparece con la decisión.",
+    pregunta: "¿Con cuál de los dos podés vivir más tiempo sin que te quiebre?"
+  },
+  'final-16': {
+    reflexion: "El aprendizaje más profundo suele ocurrir después de actuar, no antes.",
+    pregunta: "¿Qué necesitarías para poder actuar sin saber cuál es el costo exacto?"
+  },
+  'final-17': {
+    reflexion: "La complejidad que se sostiene sin colapsar es una forma de madurez ética.",
+    pregunta: "¿Qué parte de esa responsabilidad mayor podés asumir esta semana?"
+  },
+  'final-18': {
+    reflexion: "Sin garantías, la decisión sigue siendo tuya. Eso es todo lo que hay.",
+    pregunta: "¿Qué significa para vos actuar bien en un mundo donde no hay garantías?"
+  }
+};
+
+const labelMap = {
+  'leave': 'Me iría',
+  'stay': 'Me quedaría',
+  'unsure': 'No sé',
+  'leave-conscience': 'Por integridad',
+  'leave-powerless': 'Sin ser cómplice',
+  'leave-external': 'Cambiando afuera',
+  'stay-inside': 'Desde adentro',
+  'stay-exposure': 'Haciendo visible',
+  'stay-impossible': 'Sin saber cómo',
+  'unsure-who': 'Depende del rol',
+  'unsure-cost': 'Depende del costo',
+  'unsure-both': 'De todo',
+};
+
+let path = [];
+let isComplete = false;
+
+function getLabel(id) {
+  return labelMap[id] || id.replace(/-/g, ' ');
+}
+
+function tallerHTML() {
+  return `
+  <div class="om-taller om-animate">
+    <p class="om-taller-eyebrow">Próximo taller</p>
+    <p class="om-taller-title">Escritura para pensar</p>
+    <p class="om-taller-sub">Leer ficción para tomar mejores decisiones</p>
+
+    <div class="om-taller-grid">
+      <div class="om-taller-item">
+        <p class="om-taller-item-label">Formato</p>
+        <p class="om-taller-item-value">4 sesiones online en vivo</p>
+      </div>
+      <div class="om-taller-item">
+        <p class="om-taller-item-label">Para quién</p>
+        <p class="om-taller-item-value">Líderes, L&D, diseñadores de aprendizaje</p>
+      </div>
+      <div class="om-taller-item">
+        <p class="om-taller-item-label">Texto ancla</p>
+        <p class="om-taller-item-value">Le Guin · Omelas</p>
+      </div>
+      <div class="om-taller-item">
+        <p class="om-taller-item-label">Modalidad</p>
+        <p class="om-taller-item-value">Grupal · reflexión + escritura</p>
+      </div>
+    </div>
+
+    <p class="om-taller-desc">Usamos la ficción especulativa como herramienta de pensamiento. Cada sesión parte de un texto literario para explorar dilemas reales de liderazgo, diseño y decisión. No hay respuestas correctas. Hay preguntas mejores.</p>
+
+    <div class="om-sessions">
+      <div class="om-session">
+        <span class="om-session-num">1</span>
+        <span class="om-session-text">El dilema — Leer Omelas y nombrar lo que incomoda</span>
+      </div>
+      <div class="om-session">
+        <span class="om-session-num">2</span>
+        <span class="om-session-text">La decisión — Irte, quedarte o no saber: ¿qué dice eso de vos?</span>
+      </div>
+      <div class="om-session">
+        <span class="om-session-num">3</span>
+        <span class="om-session-text">El sistema — ¿Dónde aparece Omelas en tu trabajo?</span>
+      </div>
+      <div class="om-session">
+        <span class="om-session-num">4</span>
+        <span class="om-session-text">La escritura — Producir un texto propio desde el dilema</span>
+      </div>
+    </div>
+
+    <a class="om-cta" href="https://forms.gle/eaVuDUfTDHHhLKHU6" target="_blank" rel="noopener">
+      Quiero anotarme →
+    </a>
+  </div>`;
+}
+
+function render() {
+  const content = document.getElementById('om-content');
+  const currentNode = path.length === 0 ? decisions.root : decisions[path[path.length - 1]];
+  const lastId = path.length > 0 ? path[path.length - 1] : null;
+  const fd = isComplete && lastId ? finalData[lastId] : null;
+
+  let html = '';
+
+  if (path.length > 0) {
+    html += '<div class="om-breadcrumb">';
+    path.forEach((step, i) => {
+      if (i > 0) html += '<span class="om-crumb-arrow">›</span>';
+      html += `<span class="om-crumb">${getLabel(step)}</span>`;
+    });
+    html += '</div>';
+  }
+
+  if (currentNode) {
+    html += '<div class="om-card om-animate">';
+    html += `<p class="om-question">${currentNode.question}</p>`;
+    if (currentNode.subtitle) html += `<p class="om-question-sub">${currentNode.subtitle}</p>`;
+    if (currentNode.reflection) html += `<div class="om-reflection">${currentNode.reflection}</div>`;
+
+    html += '<div class="om-options">';
+    currentNode.options.forEach(opt => {
+      html += `<button class="om-btn" onclick="choose('${opt.id}')">${opt.label}</button>`;
+    });
+    html += '</div>';
+
+    if (currentNode.insight) {
+      html += `<div class="om-insight">
+        <p class="om-insight-label">Lo que revela Omelas</p>
+        <p class="om-insight-text">${currentNode.insight}</p>
+      </div>`;
+    }
+
+    html += '</div>';
+  }
+
+  if (fd) {
+    html += `<div class="om-final-block om-animate">
+      <p class="om-final-label">Tu reflexión</p>
+      <p class="om-final-text">${fd.reflexion}</p>
+      <div class="om-closing-q">
+        <p class="om-closing-q-label">Para seguir pensando</p>
+        <p class="om-closing-q-text">${fd.pregunta}</p>
+      </div>
+    </div>`;
+  }
+
+  html += `<button class="om-reset" onclick="reset()">↻ Explorar otro camino</button>`;
+
+  if (isComplete) {
+    html += tallerHTML();
+  }
+
+  content.innerHTML = html;
+}
+
+function choose(id) {
+  path.push(id);
+  if (decisions[id] && decisions[id].final) isComplete = true;
+  render();
+}
+
+function reset() {
+  path = [];
+  isComplete = false;
+  render();
+}
+
+render();
+</script>
